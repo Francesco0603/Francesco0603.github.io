@@ -3,3 +3,11 @@
 body {
   font-family: 'IBM Plex Mono', monospace;
 }
+html {
+  scroll-behavior: smooth;
+}
+
+img, span, p, h1, h2, h3 {
+  transition: all 0.2s ease-in-out;
+}
+
