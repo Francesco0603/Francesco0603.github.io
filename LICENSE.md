@@ -1,6 +1,7 @@
 MIT License
 
-Copyright (c) 2025 Ryan Fitzgerald
+Copyright (c) 2025 Francesco Pusceddu
+Based on original work by Ryan Fitzgerald (https://github.com/RyanFitzgerald)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
