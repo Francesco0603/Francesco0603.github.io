@@ -8,6 +8,7 @@ import Experience from "../components/Experience.astro";
 import Education from "../components/Education.astro";
 import Footer from "../components/Footer.astro";
 import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+import CV from "../components/CV.astro";
 import { siteConfig as en } from "../config.en";
 
 const siteConfig = en;
@@ -36,6 +37,7 @@ const siteConfig = en;
         <Projects siteConfig={siteConfig} />
         <Experience siteConfig={siteConfig} />
         <Education siteConfig={siteConfig} />
+        <CV siteConfig={siteConfig} />
       </main>
       <Footer siteConfig={siteConfig} />
       <LanguageSwitcher />

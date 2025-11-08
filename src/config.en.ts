@@ -1,4 +1,5 @@
 import About from "./components/About.astro";
+import CV from "./components/CV.astro";
 
 export const siteConfig = {
   name: "Francesco Pusceddu",
@@ -10,6 +11,7 @@ export const siteConfig = {
     Projects: "Projects",
     Experience: "Experience",
     Education: "Education",
+    CV: "Curriculum Vitae",
   },
   description:
     "Portfolio of Francesco Pusceddu — full-stack web development and Artificial Intelligence applications.",
@@ -34,26 +36,20 @@ export const siteConfig = {
 
   projects: [
     {
-      name: "AI Sentiment Analyzer",
+      name: "SocialEntertainment",
       description:
-        "Python-based sentiment classification of textual reviews using scikit-learn. Includes preprocessing pipeline and results reporting.",
-      link: "https://github.com/Francesco0603/ai-sentiment-analyzer",
-      skills: ["Python", "scikit-learn", "Pandas"],
+        "Python application for the analysis of social network interactions. Built with Flet and following an MVC architecture, it integrates recursive algorithms and NetworkX graph modeling to identify user clusters and behavioral patterns. The app performs dynamic SQL queries through MariaDB to compute advanced statistics and optimize data filtering.",
+      link: "https://github.com/TdP-prove-finali/PuscedduFrancesco.git",
+      skills: ["Python", "Flet", "NetworkX", "MariaDB", "SQL", "Algorithms"],
     },
     {
-      name: "Task Manager Web App",
+      name: "Guess the Sentence",
       description:
-        "Responsive to-do web app with React (frontend) and Node/Express (backend). Task management, filters, and persistence.",
-      link: "https://github.com/Francesco0603/todo-list-react",
-      skills: ["React", "Node.js", "Express", "MongoDB"],
+        "Interactive web game developed with React (frontend) and Node.js/Express (backend). Players try to guess hidden sentences through a dynamic interface that communicates with a REST API. Game states, scores, and logic are managed server-side with SQLite persistence.",
+      link: "https://github.com/polito-aw1-2025-exams/esame3-indovina-frase-Francesco0603.git",
+      skills: ["React", "Node.js", "Express", "SQLite"],
     },
-    {
-      name: "Data Dashboard",
-      description:
-        "HTML/CSS/JS dashboard displaying KPIs and interactive charts from JSON datasets.",
-      link: "https://github.com/Francesco0603/data-dashboard-html-css",
-      skills: ["HTML", "CSS", "JavaScript"],
-    },
+
   ],
 
   experience: [
@@ -92,6 +88,19 @@ export const siteConfig = {
       ],
     },
   ],
+
+  cv: {
+    enabled: true,
+    file: "/cv_francesco_pusceddu.pdf",  
+    intro: "Brief overview of key skills and experiences.",
+    highlights: [
+      "Developer of a Python app (Flet + NetworkX) for social network analysis.",
+      "Experience with React/Node.js (REST APIs, SQLite/MariaDB).",
+      "Focus on query optimization, MVC architecture, recursive algorithms.",
+    ],
+    // link a versione web
+    //webPage: "/cv"   
+  },
 
   profileImage: "/images/francesco.jpg",
 

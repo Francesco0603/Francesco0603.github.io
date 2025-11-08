@@ -1,12 +1,11 @@
----
-/* nessuna prop */
----
 <div class="fixed top-4 right-6 z-50">
-  <a id="lang-btn"
-     class="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-[var(--accent-color)]
-            transition-colors bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full shadow"
-     href="/">
-    <span id="lang-flag" class="emoji"></span>
+  <a
+    id="lang-btn"
+    class="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-[var(--accent-color)]
+           transition-colors bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full shadow"
+    href="/"
+  >
+    <img id="lang-flag" alt="flag" class="w-5 h-5" />
     <span id="lang-label" class="hidden sm:inline"></span>
   </a>
 </div>
@@ -19,12 +18,14 @@
     const flag = document.getElementById('lang-flag');
     const label= document.getElementById('lang-label');
 
-    // UI del bottone
-    flag.textContent  = onIt ? '🇬🇧' : '🇮🇹';
+    // link diretti alle SVG Twemoji
+    const FLAG_GB = 'https://cdn.jsdelivr.net/gh/twitter/twemoji/assets/svg/1f1ec-1f1e7.svg'; // 🇬🇧
+    const FLAG_IT = 'https://cdn.jsdelivr.net/gh/twitter/twemoji/assets/svg/1f1ee-1f1f9.svg'; // 🇮🇹
+
+    flag.src = onIt ? FLAG_GB : FLAG_IT;
     label.textContent = onIt ? 'English' : 'Italiano';
     btn.setAttribute('href', next === 'it' ? '/it/' : '/');
 
-    // salva preferenza quando clicchi
     btn.addEventListener('click', () => {
       try { localStorage.setItem('lang', next); } catch(_) {}
     }, { passive: true });
@@ -32,6 +33,15 @@
 </script>
 
 <style is:inline>
-  /* usa un font emoji, non quello monospazio del sito */
-  .emoji { font-family: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif; }
+  #lang-flag {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+
+  #lang-btn:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+  }
 </style>

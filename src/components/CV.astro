@@ -1,0 +1,101 @@
+---
+const { siteConfig } = Astro.props;
+
+/** Tipi locali per inferenza */
+type CVConfig = {
+  enabled?: boolean;
+  file?: string;            // /cv_francesco_pusceddu.pdf
+  webPage?: string;         // /cv (opzionale)
+  intro?: string;           // testo breve
+  highlights?: string[];    // punti salienti
+};
+
+const cv: CVConfig = (siteConfig?.cv ?? {}) as CVConfig;
+
+/** hasCV: renderizza solo se attivo o se c’è contenuto utile */
+const hasCV =
+  !!cv &&
+  (cv.enabled ?? true) &&
+  (!!cv.file || (Array.isArray(cv.highlights) && cv.highlights.length > 0) || !!cv.intro);
+---
+
+{
+  hasCV && (
+    <section id="cv" class="p-8 sm:p-12 md:p-16 lg:p-24">
+      <div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          <!-- Sinistra: titolo + barra -->
+          <div class="lg:col-span-4">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+              {siteConfig.navbar.CV /* usa label dalla config (IT/EN) */}
+            </h2>
+            <div
+              class="w-[75px] h-[5px] mt-2 rounded-full"
+              style={`background-color: ${siteConfig.accentColor}`}
+            />
+          </div>
+
+          <!-- Destra: contenuto -->
+          <div class="lg:col-span-8">
+            <div class="space-y-8">
+              <!-- Card principale, come nei projects -->
+              <div
+                class="relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300"
+              >
+                <!-- Intro -->
+                {cv.intro && (
+                  <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
+                    {cv.intro}
+                  </p>
+                )}
+
+                <!-- Highlights -->
+                {Array.isArray(cv.highlights) && cv.highlights.length > 0 && (
+                  <ul class="mt-5 space-y-3">
+                    {cv.highlights.map((item, idx) => (
+                      <li class="flex items-start gap-3">
+                        <span
+                          class="shrink-0 text-xs sm:text-sm font-mono px-2 py-1 rounded-md"
+                          style={`background-color:${siteConfig.accentColor}15; color:${siteConfig.accentColor}`}
+                        >
+                          {String(idx + 1).padStart(2, "0")}
+                        </span>
+                        <span class="text-gray-800 text-sm sm:text-base leading-relaxed">
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                <!-- Azioni -->
+                <br>
+                <div class="mt-6 flex flex-wrap justify-center items-center gap-3">
+                  {cv.file && (
+                    <a
+                      href={cv.file}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-2 rounded-lg bg-gray-900 text-white px-4 sm:px-5 py-2.5 text-sm sm:text-base font-medium transition-all duration-300 hover:bg-gray-800"
+                    >
+                      📄 <span>Scarica PDF</span>
+                    </a>
+                  )}
+                  {cv.webPage && (
+                    <a
+                      href={cv.webPage}
+                      class="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-4 sm:px-5 py-2.5 text-sm sm:text-base text-gray-800 font-medium transition-all duration-300 hover:bg-white"
+                    >
+                      🖥️ <span>Versione web</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+              <!-- /card -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

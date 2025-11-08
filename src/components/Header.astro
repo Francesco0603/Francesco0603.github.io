@@ -1,10 +1,10 @@
 ---
 const { siteConfig } = Astro.props;
-import LanguageSwitcher from "./LanguageSwitcher.astro";
 
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+const hasCV = siteConfig.cv && siteConfig.cv.enabled; 
 ---
 
 <header
@@ -26,10 +26,10 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
       {hasEducation && (
         <li><a href="#education" class="text-gray-700 hover:text-black font-medium transition-colors">{siteConfig.navbar.Education}</a></li>
       )}
+      {hasCV && (
+        <li><a href="#cv" class="text-gray-700 hover:text-black font-medium transition-colors">{siteConfig.navbar.CV}</a></li>
+      )}
     </ul>
-
-    <!-- Destra: switch lingua -->
-    <LanguageSwitcher client:load />
   </nav>
 </header>
 
@@ -45,7 +45,5 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
 </script>
 
 <style>
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 </style>

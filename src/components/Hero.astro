@@ -130,8 +130,77 @@ const { siteConfig } = Astro.props;
       height="100%"
       stroke-width={0}></rect>
   </svg>
-  <div class="h-full mx-auto p-8 sm:p-12 md:p-24 flex items-center">
+  <div class="h-full mx-auto px-8 sm:px-12 md:px-24 flex items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] items-center gap-12 w-full">
+      <!-- TESTO -->
+      <div class="text-center lg:text-left">
+        <h2 class="text-pretty text-xl sm:text-2xl md:text-5xl font-bold tracking-tight text-gray-700 animate-fade-in">
+          {siteConfig.greeting}
+        </h2>
+
+        <h1 class="mt-6 sm:mt-8 md:mt-10 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-800 animate-fade-in animation-delay-200">
+          {siteConfig.im}{' '}
+          <span style={{ color: siteConfig.accentColor }}>{siteConfig.name}</span>
+        </h1>
+
+        <!-- Sottotitolo -->
+        <p class="mt-8 text-pretty text-base sm:text-lg md:text-xl font-medium text-gray-600 animate-fade-in animation-delay-400">
+          {siteConfig.title}
+        </p>
+
+        <!-- Sezione icone social -->
+        <div class="mt-6 flex justify-center lg:justify-start items-center gap-6 text-gray-700 animate-fade-in animation-delay-600">
+          {
+            siteConfig.social?.email && (
+              <a href={`mailto:${siteConfig.social.email}`} aria-label="Email"
+                class="transition-colors duration-300 hover:text-[var(--accent-color)]">
+                <i class="ri-mail-line text-2xl"></i>
+              </a>
+            )
+          }
+          {
+            siteConfig.social?.linkedin && (
+              <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+                class="transition-colors duration-300 hover:text-[var(--accent-color)]">
+                <i class="ri-linkedin-box-line text-2xl"></i>
+              </a>
+            )
+          }
+          {
+            siteConfig.social?.github && (
+              <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+                class="transition-colors duration-300 hover:text-[var(--accent-color)]">
+                <i class="ri-github-line text-2xl"></i>
+              </a>
+            )
+          }
+        </div>
+      </div>
+
+      <!-- IMMAGINE PROFILO -->
+      <div class="mt-10 lg:mt-0 lg:pt-10 flex justify-center lg:justify-end">
+        <img
+          src={`${import.meta.env.BASE_URL}images/francesco.jpg`}
+          alt="Francesco con la corona d’alloro"
+          class="rounded-full shadow-xl ring-8 ring-white/80 object-cover
+                size-[clamp(280px,20vw,320px)]
+                hover:scale-105 transition-transform duration-300"
+        />
+        
+      </div>
+    </div>
+
+  </div>
+
+  <!--<div class="h-full mx-auto p-8 sm:p-12 md:p-24 flex items-center">
     <div>
+      <section class="text-center py-12">
+        <img 
+          src={`${import.meta.env.BASE_URL}images/francesco.jpg`} 
+          alt="Francesco con la corona d’alloro" 
+          class="rounded-full shadow-xl w-48 h-48 object-cover mx-auto mb-6"
+        />
+      </section>
       <h2
         class="text-pretty text-xl sm:text-2xl md:text-5xl font-bold tracking-tight text-gray-700 animate-fade-in"
       >
@@ -150,7 +219,7 @@ const { siteConfig } = Astro.props;
         {siteConfig.title}
       </p>
     </div>
-  </div>
+  </div>-->
   <div
     class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-700 animate-fade-in animation-delay-600"
   >
