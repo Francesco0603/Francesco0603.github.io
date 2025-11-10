@@ -15,7 +15,7 @@ export const siteConfig = {
   accentColor: "#64ffceff",
 
   social: {
-    email: "kecco.pusc@gmail.com",
+    email: "francescopusceddu25@gmail.com",
     linkedin: "https://www.linkedin.com/in/francesco-pusceddu-353673354/",
     twitter: "",
     github: "https://github.com/Francesco0603",
@@ -88,7 +88,7 @@ export const siteConfig = {
 
   cv: {
     enabled: true,
-    file: "/cv_francesco_pusceddu.pdf",  
+    file: "/Francesco_Pusceddu_Curriculum_Vitae.pdf",  
     intro: "Breve panoramica delle competenze e delle esperienze principali.",
     highlights: [
       "Sviluppatore app Python (Flet + NetworkX) per analisi social.",
